@@ -1,13 +1,18 @@
 import { AntDesign, Ionicons } from "@expo/vector-icons";
 import { StatusBar } from "expo-status-bar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Modal, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { Style } from "./Style";
+import { Provider, useSelector } from "react-redux";
+import { Store } from "./Store";
 
 export default function App() {
   const [modal, setModal] = useState(false);
 
   return (
+    <Provider store={Store}>
+
+  
     <View
       style={[
         Style.container,
@@ -17,11 +22,17 @@ export default function App() {
       <StatusBar style="auto" />
       <Word />
       <Create modal={{ modal, setModal }} />
-    </View>
+    </View>  </Provider>
   );
 }
 
 const Word = () => {
+  const distionary = useSelector(state=>state.dictionary)
+
+  useEffect(()=>{
+    console.log(distionary)
+  },[]
+  )
   return (
     <>
       <Text style={Style.words}>
