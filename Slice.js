@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 const Slice = createSlice({
     name:"dictinionary",
-initialState:[
+    initialState:[
     {
      en:"computer",
      tr:"Bilgisayar"
